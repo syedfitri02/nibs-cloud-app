@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Book a Course | NIBS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>Book Your Course</h1></header>
+  <main>
+    <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <!-- ⚠️ Replace YOUR_FORM_ID after setting up Formspree (Step 3) -->
+      
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="course">Course</label>
+      <select id="course" name="course" required>
+        <option value="">-- Select --</option>
+        <option value="Digital Literacy 101">Digital Literacy 101</option>
+        <option value="Project Management Fundamentals">Project Management Fundamentals</option>
+        <option value="Leadership for New Managers">Leadership for New Managers</option>
+      </select> <button type="submit">Submit Booking</button>
+    </form>
+  </main>
+
+  <script>
+    // Optional: Auto-fill course from URL (e.g., ?course=DL101)
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseCode = urlParams.get('course');
+    if (courseCode) {
+      let courseName = "";
+      if (courseCode === "DL101") courseName = "Digital Literacy 101";
+      else if (courseCode === "PM101") courseName = "Project Management Fundamentals";
+      else if (courseCode === "LD101") courseName = "Leadership for New Managers";
+      
+      document.querySelector([value="${courseName}"]).selected = true;
+    }
+  </script>
+</body>
+</html>
